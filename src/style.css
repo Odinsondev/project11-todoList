@@ -67,6 +67,13 @@ header {
   grid-row: 2 / 3;
 }
 
+/* test */
+#form {
+  height: auto;
+  width: auto;
+  background-color: red;
+}
+
 footer {
   border: 1px solid red;
 
