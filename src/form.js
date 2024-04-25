@@ -1,11 +1,15 @@
 //Form
 
-export default renderForm;
+export { renderForm };
 
+import { addTaskToArray } from "./newTask";
+
+/* import createNewTask from ./newTask;
+ */
 //initialize
 
 //cache DOM
-const content2 = document.getElementById('content2');
+const formContainer = document.getElementById('form-container');
 
 //bind events
 
@@ -14,7 +18,7 @@ function renderForm() {
   const form = document.createElement('form');
   form.id = 'form';
   form.method = 'get';
-  content2.appendChild(form);
+  formContainer.appendChild(form);
 
   const ul = document.createElement('ul');
   form.appendChild(ul);
@@ -93,4 +97,33 @@ function renderForm() {
   submitButton.type = 'button';
   submitButton.textContent = "Submit";
   li5.appendChild(submitButton);
+
+
+   //close form button
+   const li6 = document.createElement('li');
+   ul.appendChild(li6);
+ 
+   const closeFormButton = document.createElement('button');
+   closeFormButton.id = 'close-form-button';
+   closeFormButton.type = 'button';
+   closeFormButton.textContent = "Finished";
+   li6.appendChild(closeFormButton);
+
+  addSubmitButtonEvent();
+  addCloseFormButtonEvent();
 }
+
+function addSubmitButtonEvent() {   //in function because button not in DOM when page loads
+  const submitButton = document.getElementById('submit-button');
+  submitButton.addEventListener('click', addTaskToArray);
+}
+
+function addCloseFormButtonEvent() {   //in function because button not in DOM when page loads
+  const closeFormButton = document.getElementById('close-form-button');
+  closeFormButton.addEventListener('click', closeForm);
+}
+
+function closeForm() {
+  formContainer.innerHTML = '';
+}
+

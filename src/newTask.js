@@ -1,23 +1,29 @@
 //New Task
 
-export { addSubmitButtonEvent };
+export { addTaskToArray };
 
 //initialize
-const taskList = [];
-
 
 //cache DOM
+const formContainer = document.getElementById('form-container');
 
 //bind events
 
+//variables
+const taskList = [];
+/* let newTaskTitle = '';
+ */
 //functions
-function addSubmitButtonEvent() {   //in function as button not in DOM when page loads
-  const submitButton = document.getElementById('submit-button');
-  submitButton.addEventListener('click', createNewTask);
-  submitButton.addEventListener('click', addTaskToArray);
-  submitButton.addEventListener('click', test);
+function addTaskToArray() {   ///too many tasks!!!!!!!!!!!!!!
+  const newTask = createNewTask();
+  taskList.push(newTask);
 
+  console.log(taskList);
+
+  renderNewTaskNotification();
+  clearForm();
 }
+
 
 function createNewTask() {
   const title = document.getElementById('title').value;
@@ -34,15 +40,23 @@ function createNewTask() {
   return task;
 }
 
-function addTaskToArray() {
-  const newTask = createNewTask();
-  taskList.push(newTask);
+function clearForm() {
+  const title = document.getElementById('title');
+  const description = document.getElementById('description');
+  const dueDate = document.getElementById('due-date');
+  const priority = document.getElementById('priority');
 
-  console.log(taskList);
+  title.value = '';
+  description.value = '';
+  dueDate.value = '';
+  priority.value = '';
 }
 
-function test() {
-  const del = document.getElementById('form');
-  del.innerHTML = '';
+function renderNewTaskNotification() {
+  const newTaskTitle = taskList[taskList.length - 1].title;
+
+  const newTaskNotification = document.createElement('p');
+  newTaskNotification.textContent = "New task Added: " + `${newTaskTitle}`;
+  formContainer.appendChild(newTaskNotification);
 }
 
