@@ -12,7 +12,7 @@ const formContainer = document.getElementById('form-container');
 //bind events
 
 //variables
-const taskList = projectList[0].array;
+const taskList = projectList[0].array;   //initially pics misc array for active project
 
 
 

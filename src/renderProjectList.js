@@ -48,16 +48,26 @@ function selectProject(number) {
       const selectedProject = document.getElementById('project-button' + `${number}`);
       selectedProject.classList.add('selected-project');
 
-      test();
+      getArrayIndex();
     } else {
-      console.log('test works');   ///working on this
+
+      selectedProjectTest.classList.remove('selected-project');
+
+      const selectedProject = document.getElementById('project-button' + `${number}`);
+      selectedProject.classList.add('selected-project');
+
+      getArrayIndex();
     }
   }
 }
 
-function test() {
+function getArrayIndex() {
   const selectedProject = document.querySelector('.selected-project');
   const selectedProjectIndex = selectedProject.id;
   const index = selectedProjectIndex.slice(14);
   console.log(index);
+}
+
+function changeSelectedProject() {
+  
 }
