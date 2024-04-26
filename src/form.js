@@ -1,11 +1,9 @@
 //Form
 
-export { renderForm };
+export { renderTaskForm };
 
-import { addTaskToArray } from "./newTask";
+import { addNewTaskToArray } from "./newTask";
 
-/* import createNewTask from ./newTask;
- */
 //initialize
 
 //cache DOM
@@ -14,7 +12,7 @@ const formContainer = document.getElementById('form-container');
 //bind events
 
 //functions
-function renderForm() {
+function renderTaskForm() {
   const form = document.createElement('form');
   form.id = 'form';
   form.method = 'get';
@@ -115,7 +113,7 @@ function renderForm() {
 
 function addSubmitButtonEvent() {   //in function because button not in DOM when page loads
   const submitButton = document.getElementById('submit-button');
-  submitButton.addEventListener('click', addTaskToArray);
+  submitButton.addEventListener('click', addNewTaskToArray);
 }
 
 function addCloseFormButtonEvent() {   //in function because button not in DOM when page loads

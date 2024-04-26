@@ -4,22 +4,21 @@ import './normalize.css';
 import './style.css';
 //import other stylesheets
 
-import { renderForm } from './form';
-/* import { addSubmitButtonEvent } from './form';
- */
+import { renderProjectForm } from './projectForm';
+import { renderTaskForm } from './form';
 
 /* import pictureName from './imagedDirectory/imageName'; */
-
 
 //initialize
 
 //cache DOM
-const newTaskButton = document.getElementById('newTaskButton');
+const newProjectButton = document.getElementById('new-project-button');
+const newTaskButton = document.getElementById('new-task-button');
 
 //bind events
-newTaskButton.addEventListener('click', renderForm);
-/* newTaskButton.addEventListener('click', addSubmitButtonEvent);
- */
+newProjectButton.addEventListener('click', renderProjectForm);
+newTaskButton.addEventListener('click', renderTaskForm);
+
 //functions
 
 

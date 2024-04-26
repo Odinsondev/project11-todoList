@@ -60,6 +60,10 @@ header {
   grid-row: 2 / 3;
 }
 
+.selected-project {
+  background-color: red;
+}
+
 #content2 {
   border: 1px solid red;
 

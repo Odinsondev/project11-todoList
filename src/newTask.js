@@ -1,6 +1,8 @@
 //New Task
 
-export { addTaskToArray };
+export { addNewTaskToArray };
+
+import { projectList } from "./newProject";
 
 //initialize
 
@@ -10,11 +12,12 @@ const formContainer = document.getElementById('form-container');
 //bind events
 
 //variables
-const taskList = [];
-/* let newTaskTitle = '';
- */
+const taskList = projectList[0].array;
+
+
+
 //functions
-function addTaskToArray() {   ///too many tasks!!!!!!!!!!!!!!
+function addNewTaskToArray() {   ///too many tasks!!!!!!!!!!!!!!
   const newTask = createNewTask();
   taskList.push(newTask);
 
