@@ -5,7 +5,7 @@ import './style.css';
 //import other stylesheets
 
 import { renderProjectForm } from './projectForm';
-import { renderTaskForm } from './form';
+import { renderTaskForm } from './taskForm';
 
 /* import pictureName from './imagedDirectory/imageName'; */
 
@@ -22,8 +22,7 @@ newTaskButton.addEventListener('click', renderTaskForm);
 //functions
 
 
-//create   add project   function
-//make sure new task form cant be opened twice
-//render tasks
+
+//rerender tasks after changing project
 //create delete project and delete task functions
 //idea - add organize by due date function!!!!!!!!!!!!!!!!!!!

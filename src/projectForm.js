@@ -16,41 +16,59 @@ const projectFormContainer = document.getElementById('project-form-container');
 
 //functions
 function renderProjectForm() {
-  const form = document.createElement('form');
-  form.id = 'form2';
-  form.method = 'get';
-  projectFormContainer.appendChild(form);
 
-  const ul = document.createElement('ul');
-  form.appendChild(ul);
+  const projectFormTest = document.getElementById('new-project-form');
+  if (projectFormTest == undefined) {   //to check if form already open
 
-  //title
-  const li1 = document.createElement('li');
-  ul.appendChild(li1);
+    const form = document.createElement('form');
+    form.id = 'new-project-form';
+    form.method = 'get';
+    projectFormContainer.appendChild(form);
 
-  const label1 = document.createElement('label');
-  label1.htmlFor = 'project-title';
-  label1.textContent = "Title";
-  li1.appendChild(label1);
+    const ul = document.createElement('ul');
+    form.appendChild(ul);
 
-  const input1 = document.createElement('input');
-  input1.type = 'text';
-  input1.id = 'project-title';
-  input1.name = 'project-title';
-  input1.required = 'true';
-  li1.appendChild(input1);
+    //title
+    const li1 = document.createElement('li');
+    ul.appendChild(li1);
 
-  //submit button
-  const li2 = document.createElement('li');
-  ul.appendChild(li2);
+    const label1 = document.createElement('label');
+    label1.htmlFor = 'project-title';
+    label1.textContent = "Title";
+    li1.appendChild(label1);
 
-  const submitButton = document.createElement('button');
-  submitButton.id = 'project-submit-button';
-  submitButton.type = 'button';
-  submitButton.textContent = "Submit";
-  li2.appendChild(submitButton);
+    const input1 = document.createElement('input');
+    input1.type = 'text';
+    input1.id = 'project-title';
+    input1.name = 'project-title';
+    input1.required = 'true';
+    li1.appendChild(input1);
 
-  addSubmitButtonEvent();
+    //submit button
+    const li2 = document.createElement('li');
+    ul.appendChild(li2);
+
+    const submitButton = document.createElement('button');
+    submitButton.id = 'project-submit-button';
+    submitButton.type = 'button';
+    submitButton.textContent = "Submit";
+    li2.appendChild(submitButton);
+
+    //cancel button
+    const li3 = document.createElement('li');
+    ul.appendChild(li3);
+
+    const cancelButton = document.createElement('button');
+    cancelButton.id = 'project-cancel-button';
+    cancelButton.type = 'button';
+    cancelButton.textContent = "Cancel";
+    li3.appendChild(cancelButton);
+
+    addSubmitButtonEvent();
+    addCancelButtonEvent();
+  } else {
+    return;   //if form already open
+  }
 }
 
 function addSubmitButtonEvent() {   //in function because button not in DOM when page loads
@@ -58,6 +76,11 @@ function addSubmitButtonEvent() {   //in function because button not in DOM when
   submitButton.addEventListener('click', addNewProjectToArray);
   submitButton.addEventListener('click', closeForm);
   submitButton.addEventListener('click', renderProjectList);   //added here as cant add to newpr
+}
+
+function addCancelButtonEvent() {   //in function because button not in DOM when page loads
+  const cancelFormButton = document.getElementById('project-cancel-button');
+  cancelFormButton.addEventListener('click', closeForm);
 }
 
 function closeForm() {

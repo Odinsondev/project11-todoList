@@ -44,7 +44,6 @@ function selectProject(number) {
   const selectProjectButton = document.getElementById('project-button' + `${number}`);
   selectProjectButton.addEventListener('click', select);
 
-
   function select() {
 
     const selectedProjectTest = document.querySelector('.selected-project');
