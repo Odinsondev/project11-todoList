@@ -3,6 +3,7 @@
 export { renderTaskForm };
 
 import { addNewTaskToArray } from "./newTask";
+import { renderTaskList } from "./renderTaskList";
 
 //initialize
 
@@ -114,6 +115,7 @@ function renderTaskForm() {
 function addSubmitButtonEvent() {   //in function because button not in DOM when page loads
   const submitButton = document.getElementById('submit-button');
   submitButton.addEventListener('click', addNewTaskToArray);
+  submitButton.addEventListener('click', renderTaskList);
 }
 
 function addCloseFormButtonEvent() {   //in function because button not in DOM when page loads

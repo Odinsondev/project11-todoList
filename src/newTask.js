@@ -1,6 +1,6 @@
 //New Task
 
-export { addNewTaskToArray, changeSelectedProject };
+export { addNewTaskToArray, changeSelectedProject, taskList };
 
 import { projectList } from "./newProject";
 import { index } from "./renderProjectList";
@@ -55,6 +55,17 @@ function createNewTask() {
 
   return task;
 }
+
+function createDemoTask() {   //adds a demo task to misc tasklist
+  const demoTask = {};
+  demoTask.title = "Study";
+  demoTask.description = "Study The Odin Project";
+  demoTask.dueDate = "Always";
+  demoTask.priority = "Super High";
+
+  taskList.push(demoTask);
+}
+createDemoTask();
 
 function clearForm() {
   const title = document.getElementById('title');
