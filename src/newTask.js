@@ -1,8 +1,9 @@
 //New Task
 
-export { addNewTaskToArray };
+export { addNewTaskToArray, changeSelectedProject };
 
 import { projectList } from "./newProject";
+import { index } from "./renderProjectList";
 
 //initialize
 
@@ -12,11 +13,23 @@ const formContainer = document.getElementById('form-container');
 //bind events
 
 //variables
-const taskList = projectList[0].array;   //initially pics misc array for active project
-
-
+let activeProjectIndex = 0;   //initially selects misc for active project
+let taskList = '';
 
 //functions
+function selectProject() {
+  taskList = projectList[activeProjectIndex].array;
+}
+selectProject();
+
+
+function changeSelectedProject() {
+activeProjectIndex = index;
+
+selectProject();
+}
+
+
 function addNewTaskToArray() {   ///too many tasks!!!!!!!!!!!!!!
   const newTask = createNewTask();
   taskList.push(newTask);

@@ -60,8 +60,13 @@ header {
   grid-row: 2 / 3;
 }
 
+.project-button {
+  height: 40px;
+  width: 100%;
+}
+
 .selected-project {
-  background-color: red;
+  background-color: rgb(189, 138, 138);
 }
 
 #content2 {

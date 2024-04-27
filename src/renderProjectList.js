@@ -1,8 +1,10 @@
 //Render Project List
 
-export { renderProjectList };
+export { renderProjectList, index };
 
 import { projectList } from "./newProject";
+
+import { changeSelectedProject } from "./newTask";
 
 //initialize
 
@@ -13,6 +15,7 @@ const projectListContainer = document.getElementById('project-list-container');
 
 
 //variables
+let index = '';
 
 //functions
 function renderProjectList() {
@@ -22,12 +25,14 @@ function renderProjectList() {
   for (let i = 0; i < projectList.length; i++) {
     const projectButton = document.createElement('button');
     projectButton.id = 'project-button' + `${i}`;
+    projectButton.classList.add('project-button');
     projectButton.type = 'button';
     projectButton.textContent = projectList[i].title;
     projectListContainer.appendChild(projectButton);
 
-    selectProject(i);
+    selectProject(i);   //to enable clicking and selecting newly rendered project buttons
     }
+  activateProjectMisc();   //activates misc after every projectList render
 }
 renderProjectList();
 
@@ -49,6 +54,8 @@ function selectProject(number) {
       selectedProject.classList.add('selected-project');
 
       getArrayIndex();
+      changeSelectedProject();
+      
     } else {
 
       selectedProjectTest.classList.remove('selected-project');
@@ -57,17 +64,20 @@ function selectProject(number) {
       selectedProject.classList.add('selected-project');
 
       getArrayIndex();
+      changeSelectedProject();
     }
   }
 }
 
 function getArrayIndex() {
   const selectedProject = document.querySelector('.selected-project');
-  const selectedProjectIndex = selectedProject.id;
-  const index = selectedProjectIndex.slice(14);
+  const selectedProjectId = selectedProject.id;
+  const selectedProjectIndex = selectedProjectId.slice(14);
+  index = Number(selectedProjectIndex);
   console.log(index);
 }
 
-function changeSelectedProject() {
-  
+function activateProjectMisc() {
+  const projectMiscParent = document.getElementById('project-list-container');
+  projectMiscParent.firstElementChild.classList.add('selected-project');
 }
