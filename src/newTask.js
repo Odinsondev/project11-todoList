@@ -4,7 +4,6 @@ export { addNewTaskToArray, changeSelectedProject, taskList };
 
 import { projectList } from "./newProject";
 import { index } from "./renderProjectList";
-
 //initialize
 
 //cache DOM
@@ -17,16 +16,16 @@ let activeProjectIndex = 0;   //initially selects misc for active project
 let taskList = '';
 
 //functions
-function selectProject() {
+function activateProject() {   //moving to renderProjects module causes issues
   taskList = projectList[activeProjectIndex].array;
 }
-selectProject();
+activateProject();
 
 
-function changeSelectedProject() {
+function changeSelectedProject() {   //moving to renderProjects module causes issues
 activeProjectIndex = index;
 
-selectProject();
+activateProject();
 }
 
 
@@ -45,7 +44,15 @@ function createNewTask() {
   const title = document.getElementById('title').value;
   const description = document.getElementById('description').value;
   const dueDate = document.getElementById('due-date').value;
-  const priority = document.getElementById('priority').value;
+
+  let priority = '';
+  if (document.getElementById('low-priority').checked == true) {
+    priority = document.getElementById('low-priority').value;
+  } else if (document.getElementById('normal-priority').checked == true) {
+    priority = document.getElementById('normal-priority').value;
+  } else if (document.getElementById('high-priority').checked == true) {
+    priority = document.getElementById('high-priority').value;
+  } else {}
 
   const task = {};
   task.title = title;
@@ -61,7 +68,7 @@ function createDemoTask() {   //adds a demo task to misc tasklist
   demoTask.title = "Study";
   demoTask.description = "Study The Odin Project";
   demoTask.dueDate = "Always";
-  demoTask.priority = "Super High";
+  demoTask.priority = "normal";
 
   taskList.push(demoTask);
 }
@@ -76,8 +83,8 @@ function clearForm() {
   title.value = '';
   description.value = '';
   dueDate.value = '';
-  priority.value = '';
-}
+/*   priority.value = '';
+ */}
 
 function renderNewTaskNotification() {
   const newTaskTitle = taskList[taskList.length - 1].title;

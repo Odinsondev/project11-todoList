@@ -118,11 +118,25 @@ li {
   margin: 1%;
 }
 
+#new-task-form>ul {
+  padding: clamp(0.25rem, 1vh, 1rem);
+}
+
 .task {
   background-color: var(--background4);
   border: 2px solid var(--background5);
   border-radius: 5px;
   margin: 1%;
+}
+
+.task>p,
+.task>div>p {
+  margin: clamp(0.25rem, 1vh, 1rem);
+}
+
+.task-top-div {
+  display: flex;
+  justify-content: space-between;
 }
 
 footer {

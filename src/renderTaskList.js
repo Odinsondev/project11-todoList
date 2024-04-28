@@ -23,25 +23,34 @@ function renderTaskList() {
     task.classList.add('task');
     taskListContainer.appendChild(task);
 
+    const topDiv = document.createElement('div');
+    topDiv.classList.add('task-top-div');
+    task.appendChild(topDiv);
+
     const taskTitle = document.createElement('p');
     taskTitle.classList.add('task-title');
     taskTitle.textContent = "Task: " + taskList[i].title;
-    task.appendChild(taskTitle);
+    topDiv.appendChild(taskTitle);
+
+    const taskDueDate = document.createElement('p');
+    taskDueDate.classList.add('task-due-date');
+    taskDueDate.textContent = "Due Date: " + taskList[i].dueDate;
+    topDiv.appendChild(taskDueDate);
+
 
     const taskDescription = document.createElement('p');
     taskDescription.classList.add('task-description');
     taskDescription.textContent = "Description: " + taskList[i].description;
     task.appendChild(taskDescription);
 
-    const taskDueDate = document.createElement('p');
-    taskDueDate.classList.add('task-due-date');
-    taskDueDate.textContent = "Due Date: " + taskList[i].dueDate;
-    task.appendChild(taskDueDate);
-
-    const taskPriority = document.createElement('p');
-    taskPriority.classList.add('task-priority');
-    taskPriority.textContent = "Priority: " + taskList[i].priority;
-    task.appendChild(taskPriority);
+    console.log(taskList[i].priority);
+    if (taskList[i].priority == 'low') {
+      task.style.backgroundColor = 'rgb(210, 218, 196)';
+    } else if (taskList[i].priority == 'normal') {
+      task.style.backgroundColor = 'rgb(190, 223, 140)';
+    } else if (taskList[i].priority == 'high') {
+      task.style.backgroundColor = 'rgb(239, 220, 112)';
+    }
   }
 }
 renderTaskList();

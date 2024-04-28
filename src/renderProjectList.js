@@ -5,6 +5,7 @@ export { renderProjectList, index };
 import { projectList } from "./newProject";
 
 import { changeSelectedProject } from "./newTask";
+import { renderTaskList } from "./renderTaskList";
 
 //initialize
 
@@ -54,6 +55,7 @@ function selectProject(number) {
 
       getArrayIndex();
       changeSelectedProject();
+      renderTaskList();   //render task list when a project is selected
       
     } else {
 
@@ -64,6 +66,8 @@ function selectProject(number) {
 
       getArrayIndex();
       changeSelectedProject();
+      renderTaskList();   //render task list when a project is selected
+
     }
   }
 }

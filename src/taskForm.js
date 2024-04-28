@@ -79,16 +79,49 @@ function renderTaskForm() {
     const li4 = document.createElement('li');
     ul.appendChild(li4);
 
+    const priorityFieldset = document.createElement('fieldset');
+    li4.appendChild(priorityFieldset);
+
+    const priorityLegend = document.createElement('legend');
+    priorityLegend.textContent = 'Priority';
+    priorityFieldset.appendChild(priorityLegend);
+
     const label4 = document.createElement('label');
-    label4.htmlFor = 'priority';
-    label4.textContent = "Priority";
-    li4.appendChild(label4);
+    label4.htmlFor = 'low-priority';
+    label4.textContent = "Low";
+    priorityFieldset.appendChild(label4);
 
     const input4 = document.createElement('input');
-    input4.type = 'text';
-    input4.id = 'priority';
+    input4.type = 'radio';
+    input4.id = 'low-priority';
     input4.name = 'priority';
-    li4.appendChild(input4);
+    input4.value = 'low'
+    priorityFieldset.appendChild(input4);
+
+    const label5 = document.createElement('label');
+    label5.htmlFor = 'normal-priority';
+    label5.textContent = "Normal";
+    priorityFieldset.appendChild(label5);
+
+    const input5 = document.createElement('input');
+    input5.type = 'radio';
+    input5.id = 'normal-priority';
+    input5.name = 'priority';
+    input5.value = 'normal'
+    input5.checked = true
+    priorityFieldset.appendChild(input5);
+
+    const label6 = document.createElement('label');
+    label6.htmlFor = 'high-priority';
+    label6.textContent = "High";
+    priorityFieldset.appendChild(label6);
+
+    const input6 = document.createElement('input');
+    input6.type = 'radio';
+    input6.id = 'high-priority';
+    input6.name = 'priority';
+    input6.value = 'high'
+    priorityFieldset.appendChild(input6);
 
 
     //submit button

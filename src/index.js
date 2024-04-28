@@ -23,6 +23,9 @@ newTaskButton.addEventListener('click', renderTaskForm);
 
 
 
-//rerender tasks after changing project
+//radio button default back to normal priority
+//form layout
+//dates
+//many tasks stretching content2, add scroll
 //create delete project and delete task functions
 //idea - add organize by due date function!!!!!!!!!!!!!!!!!!!
