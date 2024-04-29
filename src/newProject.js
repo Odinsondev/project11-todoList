@@ -41,3 +41,4 @@ function addProjectMiscToArray() {   //automatically create the first project
   console.log(projectList);
 }
 addProjectMiscToArray();
+

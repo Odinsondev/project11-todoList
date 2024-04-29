@@ -44,10 +44,13 @@ function renderProjectForm() {
     input1.required = 'true';
     li1.appendChild(input1);
 
-    //submit button
+
+    //buttons
     const li2 = document.createElement('li');
+    li2.id = 'project-li2'
     ul.appendChild(li2);
 
+    //submit button
     const submitButton = document.createElement('button');
     submitButton.id = 'project-submit-button';
     submitButton.type = 'button';
@@ -55,14 +58,11 @@ function renderProjectForm() {
     li2.appendChild(submitButton);
 
     //cancel button
-    const li3 = document.createElement('li');
-    ul.appendChild(li3);
-
     const cancelButton = document.createElement('button');
     cancelButton.id = 'project-cancel-button';
     cancelButton.type = 'button';
     cancelButton.textContent = "Cancel";
-    li3.appendChild(cancelButton);
+    li2.appendChild(cancelButton);
 
     addSubmitButtonEvent();
     addCancelButtonEvent();
@@ -86,4 +86,3 @@ function addCancelButtonEvent() {   //in function because button not in DOM when
 function closeForm() {
   projectFormContainer.innerHTML = '';
 }
-

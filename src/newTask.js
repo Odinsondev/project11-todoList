@@ -1,6 +1,6 @@
 //New Task
 
-export { addNewTaskToArray, changeSelectedProject, taskList };
+export { addNewTaskToArray, changeSelectedProject, taskList, activeProjectIndex, activateProjectMisc };
 
 import { projectList } from "./newProject";
 import { index } from "./renderProjectList";
@@ -23,9 +23,13 @@ activateProject();
 
 
 function changeSelectedProject() {   //moving to renderProjects module causes issues
-activeProjectIndex = index;
+  activeProjectIndex = index;
+  activateProject();
+}
 
-activateProject();
+function activateProjectMisc() {   //after deleting a project
+  activeProjectIndex = 0;
+  activateProject();
 }
 
 
