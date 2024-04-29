@@ -65,9 +65,9 @@ function createNewTask() {
 
 function createDemoTask() {   //adds a demo task to misc tasklist
   const demoTask = {};
-  demoTask.title = "Study";
+  demoTask.title = "Learn Web Development";
   demoTask.description = "Study The Odin Project";
-  demoTask.dueDate = "Always";
+  demoTask.dueDate = "Always and Forever";
   demoTask.priority = "normal";
 
   taskList.push(demoTask);
@@ -78,13 +78,13 @@ function clearForm() {
   const title = document.getElementById('title');
   const description = document.getElementById('description');
   const dueDate = document.getElementById('due-date');
-  const priority = document.getElementById('priority');
+  const priority = document.getElementById('normal-priority');
 
   title.value = '';
   description.value = '';
   dueDate.value = '';
-/*   priority.value = '';
- */}
+  priority.checked = true;
+}
 
 function renderNewTaskNotification() {
   const newTaskTitle = taskList[taskList.length - 1].title;

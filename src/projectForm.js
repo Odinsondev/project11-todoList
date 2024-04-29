@@ -34,7 +34,7 @@ function renderProjectForm() {
 
     const label1 = document.createElement('label');
     label1.htmlFor = 'project-title';
-    label1.textContent = "Title";
+    label1.textContent = "Title:";
     li1.appendChild(label1);
 
     const input1 = document.createElement('input');

@@ -17,9 +17,9 @@ body {
 :root {
   --background1: rgb(211, 220, 227);
   --background2: rgb(194, 185, 176);
-  --background3: rgb(126, 104, 90);
+  --background3: rgb(147, 128, 115);
   --background4: rgb(190, 223, 140);
-  --background5: rgb(209, 145, 151);
+  --background5: rgb(247, 129, 140);
   --text1: rgb(0, 0, 0);
   --text2: rgb(0, 0, 0);
   --text-footer: rgb(0, 0, 0);
@@ -62,6 +62,15 @@ li {
   padding: 0;
 }
 
+input,
+label {
+  display: block;
+}
+
+label {
+  margin: 2vh 0 2vh 0;
+}
+
 #content1 {
   grid-column: 1 / 2;
   grid-row: 2 / 3;
@@ -86,7 +95,7 @@ li {
 .project-button {
   height: 40px;
   width: 90%;
-  background-color: rgb(190, 201, 172);
+  background-color: rgb(210, 218, 196);
   border-style: none;
   border: 2px solid var(--background5);
   border-radius: 5px;
@@ -104,6 +113,8 @@ li {
   margin: 0.5vw;
   background-color: var(--background2);
   border-radius: 5px;
+
+  overflow: auto;
 }
 
 #new-task-button {
@@ -119,7 +130,67 @@ li {
 }
 
 #new-task-form>ul {
-  padding: clamp(0.25rem, 1vh, 1rem);
+  padding: 1.5vw;
+}
+
+#li1 {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+
+  margin: 1vh 0 2vh 0;
+}
+
+#li2 {
+  margin: 4vh 0 2vh 0;
+}
+
+#li4 {
+  margin: 4vh 0 2vh 0;
+}
+
+#title-div,
+#date-div,
+#low-prio-div,
+#norm-prio-div,
+#high-prio-div {
+  display: flex;
+}
+
+#title-div>label,
+#date-div>label,
+#low-prio-div>label,
+#norm-prio-div>label,
+#high-prio-div>label {
+  margin-right: 1vw;
+}
+
+#title-div {
+  width: 50vw;
+}
+
+#title {
+  width: 100%;
+}
+
+#description {
+  width: 99.5%;
+}
+
+#priority-fieldset {
+  display: flex;
+  justify-content: space-around;
+}
+
+#li5 {
+  display: flex;
+  
+  margin: 2vh 0 1vh 0;
+}
+
+#submit-button,
+#close-form-button {
+margin: 3vh 2vw 0 0;
 }
 
 .task {
@@ -127,6 +198,7 @@ li {
   border: 2px solid var(--background5);
   border-radius: 5px;
   margin: 1%;
+  padding: 1vh 1.5vw 1vh 1.5vw;
 }
 
 .task>p,

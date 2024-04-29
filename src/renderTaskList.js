@@ -29,18 +29,18 @@ function renderTaskList() {
 
     const taskTitle = document.createElement('p');
     taskTitle.classList.add('task-title');
-    taskTitle.textContent = "Task: " + taskList[i].title;
+    taskTitle.textContent = /* "Task: " +  */taskList[i].title;
     topDiv.appendChild(taskTitle);
 
     const taskDueDate = document.createElement('p');
     taskDueDate.classList.add('task-due-date');
-    taskDueDate.textContent = "Due Date: " + taskList[i].dueDate;
+    taskDueDate.textContent = /* "Due Date: " +  */taskList[i].dueDate;
     topDiv.appendChild(taskDueDate);
 
 
     const taskDescription = document.createElement('p');
     taskDescription.classList.add('task-description');
-    taskDescription.textContent = "Description: " + taskList[i].description;
+    taskDescription.textContent = /* "Description: " +  */taskList[i].description;
     task.appendChild(taskDescription);
 
     console.log(taskList[i].priority);

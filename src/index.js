@@ -23,9 +23,11 @@ newTaskButton.addEventListener('click', renderTaskForm);
 
 
 
-//radio button default back to normal priority
-//form layout
-//dates
-//many tasks stretching content2, add scroll
+//project form layout
 //create delete project and delete task functions
+//create edit task function???
+
 //idea - add organize by due date function!!!!!!!!!!!!!!!!!!!
+
+//bug - required attribute not working as button type is button
+//bug - make sure long titles and descriptions don't alter the layout, add scroll or hide
