@@ -28,14 +28,17 @@ newTaskButton.addEventListener('click', renderTaskForm);
 
 
 
-//create delete task function
 //create edit task function
 //add tickbox to tasks
 //local storage
+//improve task notifications
 
 //maybe - rename project
+//maybe - try using 3rd party libraries
 
 //idea - add organize by due date function!
 
 //bug - required attribute not working as button type is button
 //bug - make sure long titles and descriptions don't alter the layout, add scroll or hide
+//bug - fix edit task and delete task buttons resizing when window size changes
+//bug - button colour when urgent task

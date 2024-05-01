@@ -248,13 +248,46 @@ margin: 3vh 2vw 0 0;
 }
 
 .task>p,
-.task>div>p {
+.task>div>p,
+.task>div>div>p {
   margin: clamp(0.25rem, 1vh, 1rem);
 }
 
 .task-top-div {
   display: flex;
   justify-content: space-between;
+}
+
+.task-top-right-div {
+  display: flex;
+}
+
+.task-due-date {
+  padding-right: 2vw;
+}
+
+.task-top-right-div>button:hover {
+  background-color: rgb(164, 205, 103);
+}
+
+.task-edit-button {
+  height: 25px;
+  width: 25px;
+  background-image: url(./icons/edit.svg);
+  margin: clamp(0.25rem, 1vh, 1rem);
+  border-style: none;
+  border-radius: 3px;
+  background-color: var(--background4);
+}
+
+.task-delete-button {
+  height: 25px;
+  width: 25px;
+  background-image: url(./icons/delete.svg);
+  margin: clamp(0.25rem, 1vh, 1rem);
+  border-style: none;
+  border-radius: 3px;
+  background-color: var(--background4);
 }
 
 footer {
