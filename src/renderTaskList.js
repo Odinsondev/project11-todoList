@@ -4,6 +4,8 @@ export { renderTaskList };
 
 import { taskList } from "./newTask";
 
+import { renderEditTaskForm } from "./editTask";
+
 
 //initialize
 
@@ -28,11 +30,33 @@ function renderTaskList() {
     topDiv.classList.add('task-top-div');
     task.appendChild(topDiv);
 
+
+    const topLeftDiv = document.createElement('div');
+    topLeftDiv.classList.add('task-top-left-div');
+    topDiv.appendChild(topLeftDiv);
+
+    //checkbox
+    const taskCheckbox = document.createElement('input'); ///////////////////////////////////
+    taskCheckbox.type = 'checkbox';
+    taskCheckbox.id = 'task-checkbox' + `${i}`;
+    if (taskList[i].status == 'not complete') {
+      taskCheckbox.checked = false;
+    } else if (taskList[i].status == 'complete') {
+      taskCheckbox.checked = true;
+    }
+    topLeftDiv.appendChild(taskCheckbox);
+    changeTaskStatus(i);
+
     //title
     const taskTitle = document.createElement('p');
+    taskTitle.id = 'task-title' + `${i}`;
     taskTitle.classList.add('task-title');
     taskTitle.textContent = taskList[i].title;
-    topDiv.appendChild(taskTitle);
+    if (taskList[i].status == 'complete') {
+      taskTitle.classList.add('completed');
+    }
+    topLeftDiv.appendChild(taskTitle);
+
 
     const topRightDiv = document.createElement('div');
     topRightDiv.classList.add('task-top-right-div');
@@ -98,8 +122,23 @@ function editTask(number) {
   taskEditButton.addEventListener('click', editSelectedTask);
 
   function editSelectedTask() {
-    console.log(number);
+    renderEditTaskForm(number);
   }
+}
 
+function changeTaskStatus(taskIndex) {
+  const taskStatusCheckbox = document.getElementById('task-checkbox' + `${taskIndex}`);
+  taskStatusCheckbox.addEventListener('click', changeStatus);
 
+  function changeStatus() {
+    const taskTitle = document.getElementById('task-title' + `${taskIndex}`);
+
+    if (taskStatusCheckbox.checked == false) {
+      taskList[taskIndex].status = 'not complete';
+      taskTitle.classList.remove('completed');
+    } else if (taskStatusCheckbox.checked == true) {
+      taskList[taskIndex].status = 'complete';
+      taskTitle.classList.add('completed');
+    }
+  }
 }

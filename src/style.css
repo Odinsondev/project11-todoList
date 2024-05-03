@@ -179,6 +179,18 @@ margin: 3vh 0 0 0;
   padding: 1.5vw;
 }
 
+#edit-task-form {
+  height: auto;
+  width: auto;
+  background-color: var(--background1);
+  border-radius: 5px;
+  margin: 1%;
+}
+
+#edit-task-form>ul {
+  padding: 1.5vw;
+}
+
 #li1 {
   display: flex;
   justify-content: space-between;
@@ -258,8 +270,21 @@ margin: 3vh 2vw 0 0;
   justify-content: space-between;
 }
 
+.task-top-left-div {
+  display: flex;
+}
+
 .task-top-right-div {
   display: flex;
+}
+
+.task-title,
+.task-due-date {
+  padding-top: 3px;
+}
+
+.completed {
+  text-decoration: line-through;
 }
 
 .task-due-date {

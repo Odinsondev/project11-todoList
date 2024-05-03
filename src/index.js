@@ -28,8 +28,6 @@ newTaskButton.addEventListener('click', renderTaskForm);
 
 
 
-//create edit task function
-//add tickbox to tasks
 //local storage
 //improve task notifications
 
@@ -42,3 +40,4 @@ newTaskButton.addEventListener('click', renderTaskForm);
 //bug - make sure long titles and descriptions don't alter the layout, add scroll or hide
 //bug - fix edit task and delete task buttons resizing when window size changes
 //bug - button colour when urgent task
+//bug - task status reverts when editing task

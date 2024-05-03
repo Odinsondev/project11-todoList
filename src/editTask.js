@@ -2,15 +2,12 @@
 //maybe move delete task here as well
 
 
-//import i from renderTaskList
-//render form with current input in input field
-//on submit delete old object and add new object to array, then render
-//remove finised button
-
 export { renderEditTaskForm };
 
-import { addNewTaskToArray } from "./newTask";
+import { createNewTask } from "./newTask";
 import { renderTaskList } from "./renderTaskList";
+
+import { taskList } from "./newTask";   //to get current input values
 
 //initialize
 
@@ -25,15 +22,15 @@ function deleteTaskList() {
   taskListContainer.innerHTML = '';
 }
 
-function renderEditTaskForm() {
+function renderEditTaskForm(taskIndex) {
 
   deleteTaskList();   //clear content2 for the form
 
-  const taskFormTest = document.getElementById('new-task-form');
+  const taskFormTest = document.getElementById('edit-task-form');
   if (taskFormTest == undefined) {   //to check if form already open
 
     const form = document.createElement('form');
-    form.id = 'new-task-form';
+    form.id = 'edit-task-form';
     form.method = 'get';
     formContainer.appendChild(form);
 
@@ -60,7 +57,7 @@ function renderEditTaskForm() {
     input1.type = 'text';
     input1.id = 'title';
     input1.name = 'title';
-    input1.placeholder = '     What should I do? (Required)'
+    input1.value = taskList[taskIndex].title;
     input1.required = 'true';
     titleDiv.appendChild(input1);
 
@@ -78,6 +75,7 @@ function renderEditTaskForm() {
     input2.type = 'date';
     input2.id = 'due-date';
     input2.name = 'due-date';
+    input2.value = taskList[taskIndex].dueDate;
     dateDiv.appendChild(input2);
 
 
@@ -95,13 +93,13 @@ function renderEditTaskForm() {
     input3.id = 'description';
     input3.name = 'description';
     input3.rows = '3';
-    input3.placeholder = '\n     How and Why should I do it? (Optional)';
+    input3.value = taskList[taskIndex].description;
     li2.appendChild(input3);
 
     //no li3
 
 
-    //priority
+    //priority                                     //get prio value 
     const li4 = document.createElement('li');
     li4.id = 'li4';
     ul.appendChild(li4);
@@ -128,7 +126,10 @@ function renderEditTaskForm() {
     input4.type = 'radio';
     input4.id = 'low-priority';
     input4.name = 'priority';
-    input4.value = 'low'
+    input4.value = 'low';
+    if (taskList[taskIndex].priority == 'low') {
+      input4.checked = true;
+    }
     lowPrioDiv.appendChild(input4);
 
     //norm prio
@@ -145,8 +146,10 @@ function renderEditTaskForm() {
     input5.type = 'radio';
     input5.id = 'normal-priority';
     input5.name = 'priority';
-    input5.value = 'normal'
-    input5.checked = true
+    input5.value = 'normal';
+    if (taskList[taskIndex].priority == 'normal') {
+      input5.checked = true;
+    }
     normPrioDiv.appendChild(input5);
 
     //high prio
@@ -163,7 +166,10 @@ function renderEditTaskForm() {
     input6.type = 'radio';
     input6.id = 'high-priority';
     input6.name = 'priority';
-    input6.value = 'high'
+    input6.value = 'high';
+    if (taskList[taskIndex].priority == 'high') {
+      input6.checked = true;
+    }
     highPrioDiv.appendChild(input6);
 
 
@@ -178,29 +184,23 @@ function renderEditTaskForm() {
     submitButton.type = 'button';
     submitButton.textContent = "Submit";
     li5.appendChild(submitButton);
-  
-    const closeFormButton = document.createElement('button');
-    closeFormButton.id = 'close-form-button';
-    closeFormButton.type = 'button';
-    closeFormButton.textContent = "Finished";
-    li5.appendChild(closeFormButton);
 
-    addSubmitButtonEvent();
-    addCloseFormButtonEvent();
+    addSubmitButtonEvent(taskIndex);
   } else {
     return;   //if form already open
   }
 }
 
-function addSubmitButtonEvent() {   //in function because button not in DOM when page loads
+function addSubmitButtonEvent(taskIndex) {   //in function because button not in DOM when page loads
   const submitButton = document.getElementById('submit-button');
-  submitButton.addEventListener('click', addNewTaskToArray);
-}
+  submitButton.addEventListener('click', replaceTaskInArray);
+  submitButton.addEventListener('click', closeForm);
+  submitButton.addEventListener('click', renderTaskList);
 
-function addCloseFormButtonEvent() {   //in function because button not in DOM when page loads
-  const closeFormButton = document.getElementById('close-form-button');
-  closeFormButton.addEventListener('click', closeForm);
-  closeFormButton.addEventListener('click', renderTaskList);
+  function replaceTaskInArray() {
+    const updatedTask = createNewTask()
+    taskList.splice(taskIndex, 1, updatedTask);
+  }
 }
 
 function closeForm() {

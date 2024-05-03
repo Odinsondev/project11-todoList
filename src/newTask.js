@@ -1,6 +1,13 @@
 //New Task
 
-export { addNewTaskToArray, changeSelectedProject, taskList, activeProjectIndex, activateProjectMisc };
+export {
+  addNewTaskToArray,
+  changeSelectedProject,
+  taskList,
+  activeProjectIndex,
+  activateProjectMisc,
+  createNewTask
+};
 
 import { projectList } from "./newProject";
 import { index } from "./renderProjectList";
@@ -63,15 +70,16 @@ function createNewTask() {
   task.description = description;
   task.dueDate = dueDate;
   task.priority = priority;
+  task.status = 'not complete';   ///////////////////////////////////////////////////////
 
   return task;
 }
 
 function createDemoTask() {   //adds a demo task to misc tasklist
   const demoTask = {};
-  demoTask.title = "Learn Web Development";
-  demoTask.description = "Study The Odin Project";
-  demoTask.dueDate = "Always and Forever";
+  demoTask.title = "Get Back to the Future";
+  demoTask.description = "Harness the power of lightning to power the DeLorean";
+  demoTask.dueDate = "1955-11-05";
   demoTask.priority = "normal";
 
   taskList.push(demoTask);
