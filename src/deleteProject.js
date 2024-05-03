@@ -8,6 +8,8 @@ import { activateProjectMisc } from "./newTask";
 import { renderProjectList } from "./renderProjectList";
 import { renderTaskList } from "./renderTaskList";
 
+import { addToLocalStorage } from "./localStorage";
+
 
 //initialize
 
@@ -23,4 +25,6 @@ function deleteProject() {
 
   activateProjectMisc();
   renderTaskList();
+
+  addToLocalStorage();
 }

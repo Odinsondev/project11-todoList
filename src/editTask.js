@@ -9,6 +9,8 @@ import { renderTaskList } from "./renderTaskList";
 
 import { taskList } from "./newTask";   //to get current input values
 
+import { addToLocalStorage } from "./localStorage";
+
 //initialize
 
 //cache DOM
@@ -200,6 +202,8 @@ function addSubmitButtonEvent(taskIndex) {   //in function because button not in
   function replaceTaskInArray() {
     const updatedTask = createNewTask()
     taskList.splice(taskIndex, 1, updatedTask);
+
+    addToLocalStorage();
   }
 }
 

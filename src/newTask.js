@@ -11,6 +11,7 @@ export {
 
 import { projectList } from "./newProject";
 import { index } from "./renderProjectList";
+import { addToLocalStorage } from "./localStorage";
 //initialize
 
 //cache DOM
@@ -44,10 +45,10 @@ function addNewTaskToArray() {   ///too many tasks!!!!!!!!!!!!!!
   const newTask = createNewTask();
   taskList.push(newTask);
 
-  console.log(taskList);
-
   renderNewTaskNotification();
   clearForm();
+
+  addToLocalStorage();
 }
 
 
@@ -70,19 +71,23 @@ function createNewTask() {
   task.description = description;
   task.dueDate = dueDate;
   task.priority = priority;
-  task.status = 'not complete';   ///////////////////////////////////////////////////////
+  task.status = 'not complete';
 
   return task;
 }
 
 function createDemoTask() {   //adds a demo task to misc tasklist
-  const demoTask = {};
-  demoTask.title = "Get Back to the Future";
-  demoTask.description = "Harness the power of lightning to power the DeLorean";
-  demoTask.dueDate = "1955-11-05";
-  demoTask.priority = "normal";
+  if (localStorage.getItem('storedProjectList') === null) {
+    const demoTask = {};
+    demoTask.title = "Get Back to the Future";
+    demoTask.description = "Harness the power of lightning to power the DeLorean";
+    demoTask.dueDate = "1955-11-05";
+    demoTask.priority = "normal";
 
-  taskList.push(demoTask);
+    taskList.push(demoTask);
+  } else {
+    return;   //if existing taskList has been retrieved from localStorage
+  }
 }
 createDemoTask();
 

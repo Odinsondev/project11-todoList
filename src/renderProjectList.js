@@ -77,10 +77,14 @@ function getArrayIndex() {
   const selectedProjectId = selectedProject.id;
   const selectedProjectIndex = selectedProjectId.slice(14);
   index = Number(selectedProjectIndex);
-  console.log(index);
 }
 
 function activateProjectMisc() {
   const projectMiscParent = document.getElementById('project-list-container');
-  projectMiscParent.firstElementChild.classList.add('selected-project');
+
+  if (projectMiscParent.hasChildNodes()) {
+    projectMiscParent.firstElementChild.classList.add('selected-project');
+  } else {
+    return;   //if deleting last project
+  }
 }

@@ -2,6 +2,9 @@
 
 export { addNewProjectToArray, projectList };
 
+import { addToLocalStorage } from "./localStorage";
+
+
 //initialize
 
 //cache DOM
@@ -9,14 +12,35 @@ export { addNewProjectToArray, projectList };
 //bind events
 
 //variables
-const projectList = [];
+let projectList = [];
+
 
 //functions
+function getFromLocalStorage() {
+  console.log('connecting to local storage');
+
+  if (localStorage.getItem('storedProjectList') === null) {
+    console.log('no data stored');
+
+    addProjectMiscToArray();
+
+  } else {
+    console.log('retrieving data');
+
+    const retrievedStringifiedData = localStorage.getItem('storedProjectList');
+    const parsedData = JSON.parse(retrievedStringifiedData);
+
+    projectList = parsedData;
+  }
+}
+getFromLocalStorage();
+
+
 function addNewProjectToArray() {
   const newProject = createNewProject();
   projectList.push(newProject);
-
-  console.log(projectList);
+  
+  addToLocalStorage();
 }
 
 
@@ -37,8 +61,4 @@ function addProjectMiscToArray() {   //automatically create the first project
   project1.array = [];
 
   projectList.push(project1);
-
-  console.log(projectList);
 }
-addProjectMiscToArray();
-

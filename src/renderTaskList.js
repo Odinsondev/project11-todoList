@@ -6,6 +6,8 @@ import { taskList } from "./newTask";
 
 import { renderEditTaskForm } from "./editTask";
 
+import { addToLocalStorage } from "./localStorage";
+
 
 //initialize
 
@@ -36,7 +38,7 @@ function renderTaskList() {
     topDiv.appendChild(topLeftDiv);
 
     //checkbox
-    const taskCheckbox = document.createElement('input'); ///////////////////////////////////
+    const taskCheckbox = document.createElement('input');
     taskCheckbox.type = 'checkbox';
     taskCheckbox.id = 'task-checkbox' + `${i}`;
     if (taskList[i].status == 'not complete') {
@@ -90,7 +92,6 @@ function renderTaskList() {
     task.appendChild(taskDescription);
 
     //priority
-    console.log(taskList[i].priority);
     if (taskList[i].priority == 'low') {
       task.style.backgroundColor = 'rgb(210, 218, 196)';
     } else if (taskList[i].priority == 'normal') {
@@ -114,6 +115,8 @@ function deleteTask(number) {
     taskList.splice(number, 1);
 
     renderTaskList();
+
+    addToLocalStorage();
   }
 }
 
@@ -136,9 +139,11 @@ function changeTaskStatus(taskIndex) {
     if (taskStatusCheckbox.checked == false) {
       taskList[taskIndex].status = 'not complete';
       taskTitle.classList.remove('completed');
+      addToLocalStorage();
     } else if (taskStatusCheckbox.checked == true) {
       taskList[taskIndex].status = 'complete';
       taskTitle.classList.add('completed');
+      addToLocalStorage();
     }
   }
 }
