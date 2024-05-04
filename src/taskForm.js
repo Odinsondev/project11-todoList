@@ -10,6 +10,7 @@ import { renderTaskList } from "./renderTaskList";
 //cache DOM
 const taskListContainer = document.getElementById('task-list-container');
 const formContainer = document.getElementById('form-container');
+const notificationContainer = document.getElementById('notification-container');
 
 //bind events
 
@@ -198,4 +199,5 @@ function addCloseFormButtonEvent() {   //in function because button not in DOM w
 
 function closeForm() {
   formContainer.innerHTML = '';
+  notificationContainer.innerHTML = '';
 }

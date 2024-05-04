@@ -29,8 +29,6 @@ newTaskButton.addEventListener('click', renderTaskForm);
 
 
 
-//improve task notifications
-
 //maybe - try using 3rd party libraries
 
 //bug - required attribute not working as button type is button

@@ -16,6 +16,7 @@ import { addToLocalStorage } from "./localStorage";
 
 //cache DOM
 const formContainer = document.getElementById('form-container');
+const notificationContainer = document.getElementById('notification-container');
 
 //bind events
 
@@ -103,11 +104,27 @@ function clearForm() {
   priority.checked = true;
 }
 
-function renderNewTaskNotification() {
+function renderNewTaskNotification() {   //add fade out effect
   const newTaskTitle = taskList[taskList.length - 1].title;
 
+  const notificationArea = document.createElement('div');
+  notificationArea.classList.add('notification-area');
+  notificationContainer.appendChild(notificationArea);
+
   const newTaskNotification = document.createElement('p');
+  newTaskNotification.classList.add('notification-text');
   newTaskNotification.textContent = "New task Added: " + `${newTaskTitle}`;
-  formContainer.appendChild(newTaskNotification);
+  notificationArea.appendChild(newTaskNotification);
+
+  function deleteNotification() {
+    notificationArea.style.opacity = "0";
+    newTaskNotification.style.opacity = "0";
+
+    function removeElement() {
+      notificationArea.remove();
+    }
+    setTimeout(removeElement, 1000);
+  }
+  setTimeout(deleteNotification, 1000);
 }
 
