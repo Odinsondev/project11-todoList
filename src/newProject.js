@@ -1,31 +1,27 @@
-//New Task
+//New project, project list, get data from local storage
 
 export { addNewProjectToArray, projectList };
 
 import { addToLocalStorage } from "./localStorage";
 
 
-//initialize
-
-//cache DOM
-
-//bind events
-
 //variables
+
 let projectList = [];
 
 
 //functions
+
 function getFromLocalStorage() {
-  console.log('connecting to local storage');
+  console.log('Connecting to local storage');
 
   if (localStorage.getItem('storedProjectList') === null) {
-    console.log('no data stored');
+    console.log('No data stored');
 
     addProjectMiscToArray();
 
   } else {
-    console.log('retrieving data');
+    console.log('Retrieving data');
 
     const retrievedStringifiedData = localStorage.getItem('storedProjectList');
     const parsedData = JSON.parse(retrievedStringifiedData);

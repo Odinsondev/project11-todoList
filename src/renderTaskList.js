@@ -3,22 +3,18 @@
 export { renderTaskList };
 
 import { taskList } from "./newTask";
-
 import { renderEditTaskForm } from "./editTask";
-
 import { addToLocalStorage } from "./localStorage";
+import { formatInTimeZone } from 'date-fns-tz';
 
-
-//initialize
 
 //cache DOM
+
 const taskListContainer = document.getElementById('task-list-container');
 
-//bind events
-
-//variables
 
 //functions
+
 function renderTaskList() {
 
   deleteTaskList();
@@ -67,8 +63,13 @@ function renderTaskList() {
     //due date
     const taskDueDate = document.createElement('p');
     taskDueDate.classList.add('task-due-date');
-    taskDueDate.textContent = taskList[i].dueDate;
+    let dueDate = taskList[i].dueDate;
+    if (dueDate.length != 0) {
+      dueDate = formatInTimeZone(dueDate, 'UTC', 'dd-MM-yyyy');
+    } else {}
+    taskDueDate.textContent = dueDate;
     topRightDiv.appendChild(taskDueDate);
+
 
     //edit task
     const taskEditButton = document.createElement('button');
@@ -91,6 +92,7 @@ function renderTaskList() {
     taskDescription.textContent = taskList[i].description;
     task.appendChild(taskDescription);
 
+
     //priority
     if (taskList[i].priority == 'low') {
       task.style.backgroundColor = 'rgb(210, 218, 196)';
@@ -107,27 +109,29 @@ function deleteTaskList() {
   taskListContainer.innerHTML = '';
 }
 
-function deleteTask(number) {
-  const taskDeleteButton = document.getElementById('task-delete-button' + `${number}`);
+
+function deleteTask(taskIndex) {
+  const taskDeleteButton = document.getElementById('task-delete-button' + `${taskIndex}`);
   taskDeleteButton.addEventListener('click', deleteSelectedTask);
 
   function deleteSelectedTask() {
-    taskList.splice(number, 1);
+    taskList.splice(taskIndex, 1);
 
     renderTaskList();
-
     addToLocalStorage();
   }
 }
 
-function editTask(number) {
-  const taskEditButton = document.getElementById('task-edit-button' + `${number}`);
+
+function editTask(taskIndex) {
+  const taskEditButton = document.getElementById('task-edit-button' + `${taskIndex}`);
   taskEditButton.addEventListener('click', editSelectedTask);
 
   function editSelectedTask() {
-    renderEditTaskForm(number);
+    renderEditTaskForm(taskIndex);
   }
 }
+
 
 function changeTaskStatus(taskIndex) {
   const taskStatusCheckbox = document.getElementById('task-checkbox' + `${taskIndex}`);

@@ -3,18 +3,16 @@
 export { renderProjectForm };
 
 import { addNewProjectToArray } from "./newProject";
-
 import { renderProjectList } from './renderProjectList';
 
 
-//initialize
-
 //cache DOM
+
 const projectFormContainer = document.getElementById('project-form-container');
 
-//bind events
 
 //functions
+
 function renderProjectForm() {
 
   const projectFormTest = document.getElementById('new-project-form');
@@ -71,6 +69,7 @@ function renderProjectForm() {
   }
 }
 
+
 function addSubmitButtonEvent() {   //in function because button not in DOM when page loads
   const submitButton = document.getElementById('project-submit-button');
   submitButton.addEventListener('click', addNewProjectToArray);
@@ -78,10 +77,12 @@ function addSubmitButtonEvent() {   //in function because button not in DOM when
   submitButton.addEventListener('click', renderProjectList);   //added here as cant add to newpr
 }
 
+
 function addCancelButtonEvent() {   //in function because button not in DOM when page loads
   const cancelFormButton = document.getElementById('project-cancel-button');
   cancelFormButton.addEventListener('click', closeForm);
 }
+
 
 function closeForm() {
   projectFormContainer.innerHTML = '';

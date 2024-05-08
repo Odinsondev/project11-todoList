@@ -1,24 +1,23 @@
-//Render Project List
+//Render Project List, index of currently selected project
 
 export { renderProjectList, index };
 
 import { projectList } from "./newProject";
-
 import { changeSelectedProject } from "./newTask";
 import { renderTaskList } from "./renderTaskList";
 
-//initialize
 
 //cache DOM
-const projectListContainer = document.getElementById('project-list-container');
 
-//bind events
+const projectListContainer = document.getElementById('project-list-container');
 
 
 //variables
+
 let index = '';
 
 //functions
+
 function renderProjectList() {
 
   deleteProjectList();
@@ -37,12 +36,14 @@ function renderProjectList() {
 }
 renderProjectList();
 
+
 function deleteProjectList() {
   projectListContainer.innerHTML = '';
 }
 
-function selectProject(number) {
-  const selectProjectButton = document.getElementById('project-button' + `${number}`);
+
+function selectProject(projectIndex) {
+  const selectProjectButton = document.getElementById('project-button' + `${projectIndex}`);
   selectProjectButton.addEventListener('click', select);
 
   function select() {
@@ -50,7 +51,7 @@ function selectProject(number) {
     const selectedProjectTest = document.querySelector('.selected-project');
     if (selectedProjectTest == undefined) {
 
-      const selectedProject = document.getElementById('project-button' + `${number}`);
+      const selectedProject = document.getElementById('project-button' + `${projectIndex}`);
       selectedProject.classList.add('selected-project');
 
       getArrayIndex();
@@ -61,7 +62,7 @@ function selectProject(number) {
 
       selectedProjectTest.classList.remove('selected-project');
 
-      const selectedProject = document.getElementById('project-button' + `${number}`);
+      const selectedProject = document.getElementById('project-button' + `${projectIndex}`);
       selectedProject.classList.add('selected-project');
 
       getArrayIndex();
@@ -72,12 +73,14 @@ function selectProject(number) {
   }
 }
 
+
 function getArrayIndex() {
   const selectedProject = document.querySelector('.selected-project');
   const selectedProjectId = selectedProject.id;
   const selectedProjectIndex = selectedProjectId.slice(14);
   index = Number(selectedProjectIndex);
 }
+
 
 function activateProjectMisc() {
   const projectMiscParent = document.getElementById('project-list-container');

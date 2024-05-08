@@ -1,4 +1,4 @@
-//New Task
+//New Task, new task notification, activate selected project, create demo task
 
 export {
   addNewTaskToArray,
@@ -12,19 +12,21 @@ export {
 import { projectList } from "./newProject";
 import { index } from "./renderProjectList";
 import { addToLocalStorage } from "./localStorage";
-//initialize
+
 
 //cache DOM
-const formContainer = document.getElementById('form-container');
+
 const notificationContainer = document.getElementById('notification-container');
+
 
 //bind events
 
-//variables
 let activeProjectIndex = 0;   //initially selects misc for active project
 let taskList = '';
 
+
 //functions
+
 function activateProject() {   //moving to renderProjects module causes issues
   taskList = projectList[activeProjectIndex].array;
 }
@@ -36,19 +38,19 @@ function changeSelectedProject() {   //moving to renderProjects module causes is
   activateProject();
 }
 
+
 function activateProjectMisc() {   //after deleting a project
   activeProjectIndex = 0;
   activateProject();
 }
 
 
-function addNewTaskToArray() {   ///too many tasks!!!!!!!!!!!!!!
+function addNewTaskToArray() {
   const newTask = createNewTask();
   taskList.push(newTask);
 
   renderNewTaskNotification();
   clearForm();
-
   addToLocalStorage();
 }
 
@@ -77,13 +79,14 @@ function createNewTask() {
   return task;
 }
 
+
 function createDemoTask() {   //adds a demo task to misc tasklist
   if (localStorage.getItem('storedProjectList') === null) {
     const demoTask = {};
     demoTask.title = "Get Back to the Future";
     demoTask.description = "Harness the power of lightning to power the DeLorean";
-    demoTask.dueDate = "1955-11-05";
-    demoTask.priority = "normal";
+    demoTask.dueDate = '1955-11-05';
+    demoTask.priority = 'normal';
 
     taskList.push(demoTask);
   } else {
@@ -91,6 +94,7 @@ function createDemoTask() {   //adds a demo task to misc tasklist
   }
 }
 createDemoTask();
+
 
 function clearForm() {
   const title = document.getElementById('title');
@@ -104,7 +108,8 @@ function clearForm() {
   priority.checked = true;
 }
 
-function renderNewTaskNotification() {   //add fade out effect
+
+function renderNewTaskNotification() {
   const newTaskTitle = taskList[taskList.length - 1].title;
 
   const notificationArea = document.createElement('div');
@@ -127,4 +132,3 @@ function renderNewTaskNotification() {   //add fade out effect
   }
   setTimeout(deleteNotification, 1000);
 }
-

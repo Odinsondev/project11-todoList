@@ -1,23 +1,24 @@
-//Form
+//New task form
 
 export { renderTaskForm };
 
 import { addNewTaskToArray } from "./newTask";
 import { renderTaskList } from "./renderTaskList";
 
-//initialize
 
 //cache DOM
+
 const taskListContainer = document.getElementById('task-list-container');
 const formContainer = document.getElementById('form-container');
 const notificationContainer = document.getElementById('notification-container');
 
-//bind events
 
 //functions
+
 function deleteTaskList() {
   taskListContainer.innerHTML = '';
 }
+
 
 function renderTaskForm() {
 
@@ -186,16 +187,28 @@ function renderTaskForm() {
   }
 }
 
+
 function addSubmitButtonEvent() {   //in function because button not in DOM when page loads
   const submitButton = document.getElementById('submit-button');
-  submitButton.addEventListener('click', addNewTaskToArray);
+  submitButton.addEventListener('click', checkTitle);
+
+  function checkTitle() {
+    const titleCheck = document.getElementById('title').value;
+    if (titleCheck != '') {
+      addNewTaskToArray();
+    } else {
+      alert("Please input the title of your task");
+    }
+  }
 }
+
 
 function addCloseFormButtonEvent() {   //in function because button not in DOM when page loads
   const closeFormButton = document.getElementById('close-form-button');
   closeFormButton.addEventListener('click', closeForm);
   closeFormButton.addEventListener('click', renderTaskList);
 }
+
 
 function closeForm() {
   formContainer.innerHTML = '';

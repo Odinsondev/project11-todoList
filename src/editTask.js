@@ -1,35 +1,32 @@
-//editTask - all copied from taskForm.js
-//maybe move delete task here as well
-
+//Edit task
 
 export { renderEditTaskForm };
 
 import { createNewTask } from "./newTask";
 import { renderTaskList } from "./renderTaskList";
-
-import { taskList } from "./newTask";   //to get current input values
-
+import { taskList } from "./newTask";
 import { addToLocalStorage } from "./localStorage";
 
-//initialize
 
 //cache DOM
+
 const taskListContainer = document.getElementById('task-list-container');
 const formContainer = document.getElementById('form-container');
 
-//bind events
 
 //functions
+
 function deleteTaskList() {
   taskListContainer.innerHTML = '';
 }
+
 
 function renderEditTaskForm(taskIndex) {
 
   deleteTaskList();   //clear content2 for the form
 
   const taskFormTest = document.getElementById('edit-task-form');
-  if (taskFormTest == undefined) {   //to check if form already open
+  if (taskFormTest == undefined) {   //check if form already open
 
     const form = document.createElement('form');
     form.id = 'edit-task-form';
@@ -101,7 +98,7 @@ function renderEditTaskForm(taskIndex) {
     //no li3
 
 
-    //priority                                     //get prio value 
+    //priority
     const li4 = document.createElement('li');
     li4.id = 'li4';
     ul.appendChild(li4);
@@ -193,6 +190,7 @@ function renderEditTaskForm(taskIndex) {
   }
 }
 
+
 function addSubmitButtonEvent(taskIndex) {   //in function because button not in DOM when page loads
   const submitButton = document.getElementById('submit-button');
   submitButton.addEventListener('click', replaceTaskInArray);
@@ -206,6 +204,7 @@ function addSubmitButtonEvent(taskIndex) {   //in function because button not in
     addToLocalStorage();
   }
 }
+
 
 function closeForm() {
   formContainer.innerHTML = '';

@@ -1,18 +1,14 @@
-//Index
+//Store data in local storage
 
 export { addToLocalStorage };
 
 import { projectList } from "./newProject";
 
-//initialize
-
-//cache DOM
-
-//bind events
 
 //functions
+
 function addToLocalStorage() {
-  console.log('updating local storage');
+  console.log('Updating local storage');
 
   const stringifiedDataToStore = JSON.stringify(projectList);
 
