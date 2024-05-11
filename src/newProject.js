@@ -53,7 +53,7 @@ function createNewProject() {
 
 function addProjectMiscToArray() {   //automatically create the first project
   const project1 = {};
-  project1.title = "Miscellanious Tasks"
+  project1.title = "Miscellanious Tasks";
   project1.array = [];
 
   projectList.push(project1);

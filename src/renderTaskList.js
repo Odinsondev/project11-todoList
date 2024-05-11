@@ -66,7 +66,9 @@ function renderTaskList() {
     let dueDate = taskList[i].dueDate;
     if (dueDate.length != 0) {
       dueDate = formatInTimeZone(dueDate, 'UTC', 'dd-MM-yyyy');
-    } else {}
+    } else {
+      //do nothing and leave empty
+    }
     taskDueDate.textContent = dueDate;
     topRightDiv.appendChild(taskDueDate);
 

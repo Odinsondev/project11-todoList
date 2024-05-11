@@ -67,7 +67,7 @@ function createNewTask() {
     priority = document.getElementById('normal-priority').value;
   } else if (document.getElementById('high-priority').checked == true) {
     priority = document.getElementById('high-priority').value;
-  } else {}
+  }
 
   const task = {};
   task.title = title;

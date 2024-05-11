@@ -55,7 +55,7 @@ function renderTaskForm() {
     input1.type = 'text';
     input1.id = 'title';
     input1.name = 'title';
-    input1.placeholder = '     What should I do? (Required)'
+    input1.placeholder = '     What should I do? (Required)';
     input1.required = 'true';
     titleDiv.appendChild(input1);
 
@@ -111,7 +111,7 @@ function renderTaskForm() {
 
     //low prio
     const lowPrioDiv = document.createElement('div');
-    lowPrioDiv.id = 'low-prio-div'
+    lowPrioDiv.id = 'low-prio-div';
     priorityFieldset.appendChild(lowPrioDiv);
 
     const label4 = document.createElement('label');
@@ -123,7 +123,7 @@ function renderTaskForm() {
     input4.type = 'radio';
     input4.id = 'low-priority';
     input4.name = 'priority';
-    input4.value = 'low'
+    input4.value = 'low';
     lowPrioDiv.appendChild(input4);
 
     //norm prio
@@ -140,8 +140,8 @@ function renderTaskForm() {
     input5.type = 'radio';
     input5.id = 'normal-priority';
     input5.name = 'priority';
-    input5.value = 'normal'
-    input5.checked = true
+    input5.value = 'normal';
+    input5.checked = true;
     normPrioDiv.appendChild(input5);
 
     //high prio
@@ -158,7 +158,7 @@ function renderTaskForm() {
     input6.type = 'radio';
     input6.id = 'high-priority';
     input6.name = 'priority';
-    input6.value = 'high'
+    input6.value = 'high';
     highPrioDiv.appendChild(input6);
 
 

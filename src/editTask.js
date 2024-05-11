@@ -113,7 +113,7 @@ function renderEditTaskForm(taskIndex) {
 
     //low prio
     const lowPrioDiv = document.createElement('div');
-    lowPrioDiv.id = 'low-prio-div'
+    lowPrioDiv.id = 'low-prio-div';
     priorityFieldset.appendChild(lowPrioDiv);
 
     const label4 = document.createElement('label');
@@ -198,7 +198,7 @@ function addSubmitButtonEvent(taskIndex) {   //in function because button not in
   submitButton.addEventListener('click', renderTaskList);
 
   function replaceTaskInArray() {
-    const updatedTask = createNewTask()
+    const updatedTask = createNewTask();
     taskList.splice(taskIndex, 1, updatedTask);
 
     addToLocalStorage();

@@ -45,7 +45,7 @@ function renderProjectForm() {
 
     //buttons
     const li2 = document.createElement('li');
-    li2.id = 'project-li2'
+    li2.id = 'project-li2';
     ul.appendChild(li2);
 
     //submit button
